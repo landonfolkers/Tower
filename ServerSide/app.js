@@ -29,7 +29,7 @@ app.post("/crops", (request, response) => {
 })
 
 app.delete("/crops/:id", (request, response) => {
-    queries.delete(request.params.id, 'crop').then(() => {
+    queries.delete(request.params.id, 'crops').then(() => {
         response.sendStatus(204)
     }).catch(console.error)
 })
@@ -61,7 +61,7 @@ app.post("/soils", (request, response) => {
 })
 
 app.delete("/soils/:id", (request, response) => {
-    queries.delete(request.params.id, 'soil').then(() => {
+    queries.delete(request.params.id, 'soils').then(() => {
         response.sendStatus(204)
     }).catch(console.error)
 })
