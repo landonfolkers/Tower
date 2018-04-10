@@ -11,6 +11,7 @@ module.exports = {
         return database.select("*").from(table).where("id", id).first()
     },
     create(table, item) {
+        console.log(table)
         return database(table).insert(item, "*")
             .then(record => record[0])
     },

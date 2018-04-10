@@ -22,8 +22,8 @@ app.get("/crops/:id", (request, response) => {
 })
 
 app.post("/crops", (request, response) => {
-    console.log(request)
-    queries.create(request.body, 'crop').then(crop => {
+    console.log(request.body)
+    queries.create('crops', request.body).then(crop => {
         response.status(201).json({ crop })
     }).catch(console.error)
 })
@@ -35,7 +35,7 @@ app.delete("/crops/:id", (request, response) => {
 })
 
 app.put("/crops/:id", (request, response) => {
-    queries.update(request.params.id, request.body, 'crop').then(crop => {
+    queries.update(request.params.id, 'crops', request.body).then(crop => {
         response.json({ crop })
     }).catch(console.error)
 })
@@ -55,7 +55,7 @@ app.get("/soils/:id", (request, response) => {
 })
 
 app.post("/soils", (request, response) => {
-    queries.create(request.body, 'soil').then(soil => {
+    queries.create('soils', request.body).then(soil => {
         response.status(201).json({ soil })
     }).catch(console.error)
 })
@@ -67,7 +67,7 @@ app.delete("/soils/:id", (request, response) => {
 })
 
 app.put("/soils/:id", (request, response) => {
-    queries.update(request.params.id, request.body, 'soil').then(soil => {
+    queries.update(request.params.id, 'soils', request.body).then(soil => {
         response.json({ soil })
     }).catch(console.error)
 })
