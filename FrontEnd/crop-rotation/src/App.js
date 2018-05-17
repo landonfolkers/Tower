@@ -4,6 +4,9 @@ import Header from './components/Header'
 import CropForm from './components/CropForm'
 import CropsGrown from './components/CropsGrown'
 import SoilHistory from './components/SoilHistory'
+import UpdateHistory from './components/UpdateHistory'
+import DeleteHistory from './components/DeleteHistory'
+import Photos from './components/Photos'
 
 class App extends Component {
   constructor(props) {
@@ -72,10 +75,13 @@ class App extends Component {
     return (
       <div className='App' >
         <Header />
+        <Photos />
         <div id='input'>
           <CropForm makePerson={this.makePerson} sendCrops={this.sendCrops} sendSample={this.sendSample} findCrops={this.findCrops} />
           <CropsGrown message={this.state.message} />
           <SoilHistory />
+          <UpdateHistory />
+          <DeleteHistory />
         </div>
       </div>
     )

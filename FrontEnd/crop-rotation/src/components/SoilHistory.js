@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import HistoryList from '../components/HistoryList'
 
 let blankName = { name: '' }
-let blankSoil = { name: '', soilType: '', phLevel: '' }
+let blankSoil = { id:'', name: '', soilType: '', phLevel: '' }
 
 class SoilHistory extends Component {
     state = {
@@ -15,7 +15,7 @@ class SoilHistory extends Component {
         const soilName = this.state.soilName
         soilName[event.target.name] = event.target.value
         this.setState({ soilName: soilName })
-        this.setState({history: []})
+        this.setState({ history: [] })
     }
 
     handleSubmit = (event) => {
@@ -25,7 +25,7 @@ class SoilHistory extends Component {
             if (soils[i].name === this.state.soilName.name) {
                 let history = this.state.history
                 history.unshift(soils[i])
-                this.setState({history})
+                this.setState({ history })
             }
         }
     }
@@ -35,7 +35,7 @@ class SoilHistory extends Component {
     }
 
     getHistory = () => {
-        let url = 'http://localhost:3000/soils'
+        let url = 'http://localhost:5000/soils'
         fetch(url, {
             headers: {
                 'Content-Type': 'application/json',
@@ -46,21 +46,17 @@ class SoilHistory extends Component {
             .then(soils => this.setState({ soils: soils }))
     }
 
-    deleteRecord = () => {
-        
-    }
-
-    render() {
-        return <div id="soilhistory">
-            <h3>Look up your previous soil samples</h3>
-            <form className="soilhistoryform" onSubmit={this.handleSubmit}>
-                <label htmlFor="name">Name</label>
-                <input type="text" name="name" value={this.state.soilName.name} onChange={this.handleChange} />
-                <input type="submit" name="submit" value="Submit" />
-            </form>
-            <HistoryList history={this.state.history}/>
-        </div>
-    }
+render() {
+    return <div id="soilhistory">
+        <h3>Look up your previous soil samples</h3>
+        <form className="soilhistoryform" onSubmit={this.handleSubmit}>
+            <label htmlFor="name">Name</label>
+            <input type="text" name="name" value={this.state.soilName.name} onChange={this.handleChange} />
+            <input type="submit" name="submit" value="Submit" />
+        </form>
+        <HistoryList history={this.state.history} />
+    </div>
+}
 }
 
 export default SoilHistory
