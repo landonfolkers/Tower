@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   sendCrops = (name, crops, location) => {
-    let url = 'http://localhost:3000/crops'
+    let url = 'https://crop-rotator.herokuapp.com/crops'
     if (name === '' || crops === '' || location === '') {
       return 'error'
     } else {
@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   sendSample = (name, soilType, phLevel) => {
-    let url = 'http://localhost:3000/soils'
+    let url = 'https://crop-rotator.herokuapp.com/soils'
     if (name === '' || soilType === '' || phLevel === '') {
       return 'error'
     } else {

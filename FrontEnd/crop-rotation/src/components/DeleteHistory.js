@@ -4,15 +4,14 @@ class DeleteHistory extends Component {
     state = {
         ID: {
             ID: '',
-            name: '',
-            soilType: '',
-            phLevel: ''
-        }
+        },
+        history: ''
     }
 
     deleteHistory = (event) => {
+        event.preventDefault()
         const number = parseInt(this.state.ID.ID, 10)
-        const url = 'http://localhost:5000/soils/' + this.state.ID.ID
+        const url = 'https://crop-rotator.herokuapp.com/soils/' + this.state.ID.ID
         fetch(url, {
             method: 'DELETE',
             headers: new Headers({ "Content-Type": "application/json" }),
@@ -26,6 +25,11 @@ class DeleteHistory extends Component {
             .catch(function (error) {
                 console.log(error.message)
             })
+            if (this.state.ID.ID === '') {
+                this.setState({ history: 'Enter your ID' })
+                } else {
+            this.setState({ history: 'Entry Deleted' })
+                }
     }
 
     handleChange = (event) => {
@@ -44,6 +48,7 @@ class DeleteHistory extends Component {
                 <input type="number" name="ID" value={this.state.ID.ID} onChange={this.handleChange} />
                 <input type="submit" name="submit" value="Submit" />
             </form>
+            <h4>{this.state.history}</h4>
         </div>
     }
 }

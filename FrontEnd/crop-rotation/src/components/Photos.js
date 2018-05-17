@@ -4,18 +4,18 @@ import Gallery from 'react-photo-gallery'
 const PHOTO_SET = [
     {
       src: '/photos/farm.jpg',
-      width: 4,
-      height: 3
+      width: 3,
+      height: 1
     },
     {
         src: '/photos/farm4.jpg',
-        width: 4,
-        height: 3
+        width: 3,
+        height: 1
     },
     {
         src: '/photos/farm8.jpg',
-        width: 4,
-        height: 3
+        width: 3,
+        height: 1
       }
   ]
 

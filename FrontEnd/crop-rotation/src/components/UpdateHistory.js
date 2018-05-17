@@ -7,12 +7,14 @@ class UpdateHistory extends Component {
             name: '',
             soilType: '',
             phLevel: ''
-        }
+        },
+        history: ''
     }
 
     updateHistory = (event) => {
+        event.preventDefault()
         const number = parseInt(this.state.ID.ID, 10)
-        const url = 'http://localhost:5000/soils/' + this.state.ID.ID
+        const url = 'https://crop-rotator.herokuapp.com/soils/' + this.state.ID.ID
         fetch(url, {
             method: 'PUT',
             headers: new Headers({ "Content-Type": "application/json" }),
@@ -26,6 +28,11 @@ class UpdateHistory extends Component {
             .catch(function (error) {
                 console.log(error.message)
             })
+        if (this.state.ID.ID === '') {
+            this.setState({ history: 'Enter your ID' })
+            } else {
+        this.setState({ history: 'Entry Updated' })
+            }
     }
 
     handleChange = (event) => {
@@ -62,6 +69,7 @@ class UpdateHistory extends Component {
                 </select>
                 <input type="submit" name="submit" value="Submit" />
             </form>
+            <h4>{this.state.history}</h4>
         </div>
     }
 }
